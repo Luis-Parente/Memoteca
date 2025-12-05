@@ -30,15 +30,45 @@ export const ui = {
         divPensamentoAutoria.textContent = pensamento.autoria;
         divPensamentoAutoria.classList.add("pensamento-autoria");
 
+        const btnEditar = document.createElement("button");
+        btnEditar.classList.add("botao-editar");
+
+        btnEditar.onclick = async e => {
+            ui.preencherFormulario(pensamento.id);
+        }
+
+        const imgBotaoEditar = document.createElement("img");
+        imgBotaoEditar.src = "assets/imagens/icone-editar.png"
+        imgBotaoEditar.alt = "Botao editar";
+
+        btnEditar.appendChild(imgBotaoEditar);
+
+        const divBotoes = document.createElement("div");
+        divBotoes.classList.add("icones");
+        divBotoes.appendChild(btnEditar);
+
         liPensamento.appendChild(imgIconeAspas);
         liPensamento.appendChild(divPensamentoConteudo);
         liPensamento.appendChild(divPensamentoAutoria);
+        liPensamento.appendChild(divBotoes);
 
         ulListaPensamento.appendChild(liPensamento);
     },
 
     async limparFormulario() {
         document.getElementById("pensamento-form").reset();
+    },
+
+    async preencherFormulario(pensamentoId) {
+        const pensamento = await api.buscarPensamentoPorId(pensamentoId);
+
+        const elementoPensamentoId = document.getElementById("pensamento-id");
+        const elementoPensamentoConteudo = document.getElementById("pensamento-conteudo");
+        const elementoPensamentoAutoria = document.getElementById("pensamento-autoria");
+
+        elementoPensamentoId.value = pensamento.id;
+        elementoPensamentoConteudo.value = pensamento.conteudo;
+        elementoPensamentoAutoria.value = pensamento.autoria;
     }
 }
 
