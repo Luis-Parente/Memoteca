@@ -1,4 +1,4 @@
-![Thumbnail](./thumb.png)
+![Thumbnail](assets/imagens/thumb.png)
 
 # Memoteca
 
