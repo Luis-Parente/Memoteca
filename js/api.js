@@ -9,6 +9,22 @@ export const api = {
             alert("Erro ao buscar Pensamentos");
             throw Error;
         }
+    },
+
+    async salvarPensamento(pensamento) {
+        try {
+            const response = await fetch(API_URL, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(pensamento)
+            });
+            return await response.json();
+        } catch {
+            alert("Erro ao salvar Pensamento");
+            throw Error;
+        }
     }
 }
 
