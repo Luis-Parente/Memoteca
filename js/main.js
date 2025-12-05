@@ -5,17 +5,18 @@ const idPensamento = document.getElementById("pensamento-id")
 const conteudoPensamento = document.getElementById("pensamento-conteudo");
 const autoriaPensamento = document.getElementById("pensamento-autoria");
 
-ui.renderizarPensamentos();
+document.addEventListener("DOMContentLoaded", () => {
+    ui.renderizarPensamentos();
 
-const formPensamento = document.getElementById("pensamento-form");
-formPensamento.addEventListener("submit", manipularSubmissaoFormulario)
+    const formPensamento = document.getElementById("pensamento-form");
+    formPensamento.addEventListener("submit", manipularSubmissaoFormulario)
 
-const formCancelar = document.getElementById("botao-cancelar");
-
-formCancelar.addEventListener("click", (evento) => {
-    evento.preventDefault();
-    ui.limparFormulario();
-});
+    const formCancelar = document.getElementById("botao-cancelar");
+    formCancelar.addEventListener("click", (evento) => {
+        evento.preventDefault();
+        ui.limparFormulario();
+    });
+})
 
 async function manipularSubmissaoFormulario(evento) {
     evento.preventDefault()

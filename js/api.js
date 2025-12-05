@@ -51,6 +51,15 @@ export const api = {
             alert("Erro ao editar Pensamento");
             throw Error;
         }
+    },
+
+    async deletarPensamento(id) {
+        try {
+            const response = await fetch(`${API_URL}/${id}`, {method: "DELETE"})
+        } catch {
+            alert("Erro ao deletar Pensamento");
+            throw Error;
+        }
     }
 }
 

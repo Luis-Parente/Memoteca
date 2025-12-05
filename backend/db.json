@@ -36,11 +36,6 @@
       "autoria": "Chaves"
     },
     {
-      "id": "7e2a",
-      "conteudo": "Que a força esteja com você!",
-      "autoria": "Mestre Yoda"
-    },
-    {
       "id": "5c8f",
       "conteudo": "Resolver o bug não consegue? Esfriar a cabeça vc deve.",
       "autoria": "Mestre Yoda"
@@ -56,19 +51,14 @@
       "autoria": "Grupo da família"
     },
     {
-      "id": "8b4c",
-      "conteudo": "A vingança nunca é plena... mata a alma e a envenena...",
-      "autoria": "Seu Madruga"
-    },
-    {
       "id": "4d2e",
       "conteudo": "Se eu for aí e achar, eu esfrego na sua cara!",
       "autoria": "Mãe"
     },
     {
-      "id": "6ad2",
-      "conteudo": "Teste 0",
-      "autoria": "Teste 0"
+      "id": "a602",
+      "conteudo": "Teste 1",
+      "autoria": "Teste 1"
     }
   ]
 }

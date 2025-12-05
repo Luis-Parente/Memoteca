@@ -1,7 +1,11 @@
 import api from "./api.js";
 
+const ulListaPensamento = document.getElementById("lista-pensamentos");
+
 export const ui = {
     async renderizarPensamentos() {
+        ulListaPensamento.innerHTML = "";
+
         try {
             const pensamentos = await api.buscarPensamentos();
             pensamentos.forEach(ui.criarElementoPensamento);
@@ -11,8 +15,6 @@ export const ui = {
     },
 
     async criarElementoPensamento(pensamento) {
-        const ulListaPensamento = document.getElementById("lista-pensamentos");
-
         const liPensamento = document.createElement("li");
         liPensamento.setAttribute("data-id", pensamento.id);
         liPensamento.classList.add("li-pensamento");
@@ -43,9 +45,30 @@ export const ui = {
 
         btnEditar.appendChild(imgBotaoEditar);
 
+        const btnExcluir = document.createElement("button");
+        btnExcluir.classList.add("botao-excluir");
+
+        btnExcluir.onclick = async e => {
+            try {
+                await api.deletarPensamento(pensamento.id);
+                ui.renderizarPensamentos()
+            } catch {
+                alert("Erro ao excluir Pensamento");
+            }
+        }
+
+        const imgBotaoExcluir = document.createElement("img");
+        imgBotaoExcluir.src = "assets/imagens/icone-excluir.png"
+        imgBotaoExcluir.alt = "Botao excluir";
+
+        btnExcluir.appendChild(imgBotaoExcluir);
+
+
         const divBotoes = document.createElement("div");
         divBotoes.classList.add("icones");
+
         divBotoes.appendChild(btnEditar);
+        divBotoes.appendChild(btnExcluir);
 
         liPensamento.appendChild(imgIconeAspas);
         liPensamento.appendChild(divPensamentoConteudo);
