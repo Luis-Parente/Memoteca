@@ -60,6 +60,20 @@ export const api = {
             alert("Erro ao deletar Pensamento");
             throw Error;
         }
+    },
+
+    async buscarPensamentosPorPalavraChave(palavraChave) {
+        try {
+            const pensamentos = await this.buscarPensamentos();
+            return pensamentos.filter(pensamento => {
+                return (pensamento.autoria.toLowerCase().includes(palavraChave.toLowerCase()))
+                    || (pensamento.conteudo.toLowerCase().includes(palavraChave.toLowerCase()))
+            })
+
+        } catch {
+            alert("Erro ao buscar Pensamentos");
+            throw Error;
+        }
     }
 }
 

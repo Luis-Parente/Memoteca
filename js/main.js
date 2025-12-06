@@ -16,6 +16,9 @@ document.addEventListener("DOMContentLoaded", () => {
         evento.preventDefault();
         ui.limparFormulario();
     });
+
+    const inputBusca = document.getElementById("campo-busca");
+    inputBusca.addEventListener("input", manipularBuscaPensamentos)
 })
 
 async function manipularSubmissaoFormulario(evento) {
@@ -37,5 +40,16 @@ async function manipularSubmissaoFormulario(evento) {
         ui.limparFormulario();
     } catch {
         alert("Erro ao salvar Pensamento!");
+    }
+}
+
+async function manipularBuscaPensamentos() {
+    const termoBusca = document.getElementById("campo-busca").value;
+
+    try {
+        const pensamentosFiltrados = await api.buscarPensamentosPorPalavraChave(termoBusca)
+        ui.renderizarPensamentos(pensamentosFiltrados);
+    } catch (error) {
+        alert("Erro ao filtrar Pensamentos!");
     }
 }

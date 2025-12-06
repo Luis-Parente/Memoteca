@@ -3,12 +3,19 @@ import api from "./api.js";
 const ulListaPensamento = document.getElementById("lista-pensamentos");
 
 export const ui = {
-    async renderizarPensamentos() {
+    async renderizarPensamentos(pensamentosFiltrados = null) {
         ulListaPensamento.innerHTML = "";
 
         try {
-            const pensamentos = await api.buscarPensamentos();
-            pensamentos.forEach(ui.criarElementoPensamento);
+            let pensamentosParaRenderizar
+
+            if (pensamentosFiltrados) {
+                pensamentosParaRenderizar = pensamentosFiltrados;
+            } else {
+                pensamentosParaRenderizar = await api.buscarPensamentos();
+            }
+
+            pensamentosParaRenderizar.forEach(ui.criarElementoPensamento);
         } catch {
             alert("Erro ao renderizar Pensamentos");
         }
